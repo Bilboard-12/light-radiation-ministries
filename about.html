@@ -7,573 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Updated Church Color Palette: Radiation Blue/Gold/Purple */
-        :root {
-            --primary-color: #0077b6; /* Radiant Blue */
-            --deep-orange: #FFD700; /* Gold/Yellow */
-            --background-dark: #0f1c3a; /* Dark Blue */
-            --background-light: #2c496a; /* Medium Blue */
-            --text-light: #fff;
-            --text-muted: #e0e0e0;
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --border-soft: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes page-fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
-            color: var(--text-light);
-            min-height: 100vh;
-            line-height: 1.6;
-            position: relative;
-            
-            /* Apply Fade-In */
-            opacity: 0;
-            animation: page-fade-in 1.5s ease-out forwards;
-        }
-
-        /* Home Link Button for Navigation */
-        .home-button {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-            padding: 10px 15px;
-            background-color: var(--deep-orange);
-            color: var(--background-dark);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .home-button:hover {
-            background-color: var(--text-light);
-        }
-
-        /* RESTORED CENTERING FOR MAIN CONTENT */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto; /* Centers the container block */
-            padding: 16px;
-            margin-top: 16px;
-            margin-bottom: 16px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            display: block;
-            margin: 32px auto 8px auto;
-            width: 80px;
-            height: auto;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            position: static;
-        }
-
-        a, button, .ministry, .branch-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 16px 16px 16px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: var(--text-light);
-            border-radius: 8px;
-            margin-top: 0;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em; 
-            line-height: 1.2;
-        }
-
-        .slogan {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2em;
-            margin-top: 8px;
-            background: linear-gradient(45deg, #FFFED8, var(--deep-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-
-        h2 {
-            text-align: center;
-            color: var(--text-light);
-            padding-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.8em;
-            margin-top: 40px;
-        }
-
-        h3 {
-            color: var(--deep-orange); 
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 10px 20px;
-            margin: 15px auto 5px;
-            font-size: 1.1em;
-            text-align: center;
-            display: inline-block;
-        }
-        .ministry-details h3, .branch-details h3 {
-            width: 80%;
-            margin: 0 0 8px;
-            padding: 8px 10px;
-            font-size: 1em;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Ministry and Branch Card Grid Styles */
-        .ministry-grid, .branch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 16px;
-            padding: 0;
-        }
-
-        .ministry-image-wrapper, .branch-image-wrapper {
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-        }
-        .ministry-image-wrapper img, .branch-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ministry, .branch-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 2px solid var(--primary-color);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            transform: scale(1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 370px;
-            height: auto;
-        }
-
-        .ministry:hover, .branch-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-        }
-
-        .ministry-details, .branch-details {
-            padding: 16px 16px 32px 16px;
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .ministry-details p, .branch-details p {
-            margin: 0 0 12px;
-            color: var(--text-muted);
-            font-size: 0.9em;
-        }
-
-        .branch-details .pastor-name {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: var(--deep-orange); /* Gold for pastor name */
-            padding: 8px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-            margin-top: 16px;
-            border: 1px solid var(--deep-orange);
-            white-space: pre-wrap;
-        }
-
-        .service-time {
-            font-size: 1em;
-            font-weight: bold;
-            color: var(--deep-orange);
-            padding: 8px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-            margin-top: 16px;
-            margin-bottom: 0;
-            border: 1px solid var(--deep-orange);
-        }
-
-        /* Specific Styles for Service Routine and Testimony */
-        .service-routine {
-            text-align: center;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 15px;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        .service-routine strong {
-            color: var(--deep-orange);
-        }
-        
-        /* --- NEW TESTIMONIES TAB STYLING --- */
-        .testimony-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .testimony-card {
-            background-color: rgba(0, 119, 182, 0.15); /* Light Primary Color BG */
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            text-align: left;
-            transition: transform 0.3s ease;
-        }
-
-        .testimony-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--deep-orange); /* Gold border on hover */
-        }
-
-        .testimony-title {
-            color: var(--deep-orange);
-            font-size: 1.2em;
-            margin-top: 0;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-
-        .testimony-author {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .testimony-text {
-            color: var(--text-light);
-            line-height: 1.5;
-            text-align: left;
-        }
-        /* --- END NEW TESTIMONIES TAB STYLING --- */
-
-
-        /* Leadership Tab Styling */
-        .leader-name {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            margin-top: 20px;
-            display: block;
-            text-align: center;
-        }
-        .leader-name.branch-pastor {
-            font-size: 1em;
-            color: var(--deep-orange);
-            margin-top: 10px;
-            margin-bottom: 2px;
-            font-weight: normal;
-        }
-        .role {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-        .pastor-list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px 20px;
-            margin-top: 10px;
-        }
-        .pastor-list-grid h4 {
-            margin: 0;
-            padding: 5px;
-            font-size: 0.95em;
-            font-weight: bold;
-            color: var(--text-light);
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-        }
-
-        .mission-section {
-            padding: 32px 16px;
-            background-color: rgba(0, 0, 0, 0.6);
-            margin-top: 40px;
-            border-radius: 16px;
-            border-top: var(--border-soft);
-            text-align: center; /* Center content within the section */
-        }
-
-        .mission-section p {
-            font-style: italic;
-            text-align: center;
-            max-width: 800px;
-            margin: 12px auto;
-            line-height: 1.5;
-            font-size: 0.95em;
-            color: #e0e0e0;
-        }
-
-        .mission-section .testimony, .mission-section .prophetic-vision {
-            font-style: normal;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 5px solid var(--deep-orange);
-            margin: 25px auto; /* Centering blockquotes */
-            font-size: 1em;
-            color: var(--text-light);
-            text-align: left;
-            max-width: 90%; /* Keep blockquotes readable */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .core-values {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-        }
-        .core-values h3 {
-            width: auto;
-            font-size: 1.2em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        .core-values-item {
-            display: block;
-            margin: 10px auto;
-            max-width: 500px;
-            padding: 10px;
-            border-bottom: 1px dashed var(--deep-orange);
-            text-align: center;
-        }
-        .core-values-item strong {
-            color: var(--deep-orange);
-            font-size: 1.1em;
-        }
-
-        footer {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px 16px;
-            margin-top: 40px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        footer h2 {
-            color: var(--deep-orange);
-            margin-top: 0;
-        }
-        .footer-tabs {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 600px;
-            margin-top: 10px;
-        }
-        .tab-button {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border: none;
-            padding: 12px 20px;
-            text-align: center;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border-bottom: 2px solid transparent;
-            margin-bottom: 5px;
-        }
-        .tab-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .tab-button.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-bottom: 2px solid var(--primary-color);
-            transform: scale(1.03); 
-        }
-        .tab-content {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            animation: fadeIn 0.5s ease-in-out;
-            text-align: center; /* Center content within tab */
-        }
-        .tab-content p {
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        /* Override centering for list-like content within tabs */
-        #tab-content-team, #tab-content-testimonies {
-            text-align: left; 
-        }
-        .leader-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-align: center; /* Keep leader details centered in the card */
-        }
-        .leader-card p {
-            text-align: center;
-        }
-        .pastor-list-grid h4 {
-            text-align: center;
-        }
-
-        .contact-info a {
-            color: var(--deep-orange);
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        .tab-image {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            display: block;
-            margin: 20px auto 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* --- Prayer Form Styling --- */
-        .prayer-form {
-            max-width: 500px;
-            margin: 20px auto 0;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .prayer-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .prayer-form input[type="text"],
-        .prayer-form input[type="email"],
-        .prayer-form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: var(--text-light);
-            box-sizing: border-box; /* Important for padding/width calculation */
-        }
-
-        .prayer-form textarea {
-            resize: vertical;
-        }
-
-        .prayer-form input::placeholder,
-        .prayer-form textarea::placeholder {
-            color: var(--text-muted);
-            opacity: 0.7;
-        }
-
-        .submit-button {
-            background-color: var(--deep-orange);
-            color: var(--background-dark);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        .submit-button:hover {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-        }
-        
-        /* Desktop adjustments */
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 3.5em;
-            }
-            .ministry-grid, .branch-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 20px;
-            }
-            .footer-tabs {
-                flex-direction: row;
-                justify-content: center;
-                max-width: 1200px; 
-            }
-            .tab-button {
-                margin: 0 5px;
-            }
-            .tab-content {
-                max-width: 900px;
-            }
-        }
-        
-        /* Mobile adjustments for text readability */
-        @media (max-width: 767px) {
-            .mission-section .testimony, .mission-section .prophetic-vision {
-                text-align: left;
-            }
-            .mission-section p {
-                text-align: left;
-            }
-            .core-values-item {
-                text-align: left;
-                max-width: 100%;
-            }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <a href="index.html" class="home-button">← Back to Home</a>
+    <a href="index.html" class="home-button">
+    <span class="arrow-only">←</span>
+    <span class="full-text">Back to Home</span>
+</a>
 
     <img src="logo.png" alt="Light Radiation Church Logo" class="logo">
     
@@ -838,211 +280,109 @@
                         <span class="pastor-name">Under Oversight of the Vision Bearer</span>
                     </div>
                 </div>
-
-                <div class="branch-card">
-                    <div class="branch-image-wrapper">
-                        <img src="logo.png" alt="Lungulo Branch">
-                    </div>
-                    <div class="branch-details">
-                        <h3>Lungulo Light Radiation</h3>
-                        <p>Spreading the light of Christ throughout the Lungulo neighborhood.</p>
-                        <span class="pastor-name">Pastor Geoffrey</span>
-                    </div>
-                </div>
-
-                <div class="branch-card">
-                    <div class="branch-image-wrapper">
-                        <img src="logo.png" alt="Gotmoko Branch">
-                    </div>
-                    <div class="branch-details">
-                        <h3>Gotmoko Light Radiation CF</h3>
-                        <p>Serving the local needs and spiritual development of the Gotmoko area.</p>
-                        <span class="pastor-name">Pastor Dennis</span>
-                    </div>
-                </div>
-
-                <div class="branch-card">
-                    <div class="branch-image-wrapper">
-                        <img src="logo.png" alt="Palaka Branch">
-                    </div>
-                    <div class="branch-details">
-                        <h3>Palaka Light Radiation CF</h3>
-                        <p>A place of worship and community building in Palaka.</p>
-                        <span class="pastor-name">Pastor Samuel Arob</span>
-                    </div>
-                </div>
-
-                
             </div>
         </div>
 
-          <div id="tab-content-team" class="tab-content" style="display: none;" role="tabpanel">
-            <h2 class="tab-heading">Our Leadership Team</h2>
-            <p class="team-intro">Our church is led by dedicated servants who are committed to guiding the community in faith and purpose.</p>
-            
-            <div class="leader-card main-leader">
-                <h3 class="leader-name">Pastor Susan Mwaka</h3>
-                <p class="role">**Ministry Vision Bearer** / Lead Pastor & General Overseer</p>
-                <p class="leader-bio">Visionary leader focused on setting the direction for the ministry and discipling the community.</p>
+        <div id="tab-content-team" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Our Shepherds and Leaders</h2>
+            <div class="leader-card">
+                <span class="leader-name">Apostle/Prophet Okellamoi William</span>
+                <span class="role">Vision Bearer / Overseer</span>
+                <p>The founder and spiritual head of Light Radiation Church, guiding the global vision and mission.</p>
             </div>
             
             <div class="leader-card">
-                <h3 class="leader-name">Watmon Charles</h3>
-                <p class="role">**Administrator**</p>
+                <span class="leader-name">The Senior Leadership Team</span>
+                <p>Supporting the Vision Bearer, this team provides counsel, strategic direction, and oversight of core ministries.</p>
             </div>
 
-            <div class="leader-card">
-                <h3 class="leader-name">Lukwiya Christopher</h3>
-                <p class="role">**Church Chairman**</p>
-            </div>
-
-            <div class="leader-card">
-                <h3 class="leader-name">Opira William</h3>
-                <p class="role">**Vice Church Chairman**</p>
-            </div>
-
-            <div class="leader-card">
-                <h3 class="leader-name">Lakarabe Eunice</h3>
-                <p class="role">**Church Secretary**</p>
-            </div>
-            
-            <div class="leader-card">
-                <h3 class="leader-name">Oryrma Thomas</h3>
-                <p class="role">**Church Deacon**</p>
-            </div>
-            
-            <div class="leader-card">
-                <h3 class="leader-name">Mego Atwero Aida</h3>
-                <p class="role">**Women's Leader**</p>
-            </div>
-            
-            <div class="leader-card">
-                <h3 class="leader-name">Odoch Junior</h3>
-                <p class="role">**Youth Pastor**</p>
-            </div>
-
-            <div class="leader-card">
-                <h3 class="leader-name">John Doe (Placeholder)</h3>
-                <p class="role">Worship Director</p>
-                <p class="leader-bio">Leads our Worship and Arts Team, passionate about connecting people to God through music.</p>
-            </div>
-            <h3 class="tab-heading">Branch Pastors</h3>
+            <h3>All Branch Pastors:</h3>
             <div class="pastor-list-grid">
                 <h4>Pastor Odonkara Charles (Alii)</h4>
                 <h4>Pastor Walter Amii (Edure)</h4>
                 <h4>Pastor Susan Apiyo (Labora)</h4>
-                <h4>Pastor Jimmy Akera & Pastor Odoch Junior (Ogul)</h4>
+                <h4>Pastor Jimmy Akera (Ogul)</h4>
+                <h4>Pastor Odoch Junior (Ogul)</h4>
                 <h4>Pastor Denise Okelukwana (Kinene)</h4>
                 <h4>Pastor David (PE Rwot)</h4>
                 <h4>Pastor Ojolurwot Francis (Awako)</h4>
-                <h4>Pastor Geoffrey (Lungulo)</h4>
-                <h4>Pastor Dennis (Gotmoko)</h4>
-                <h4>Pastor Samuel Arob (Palaka)</h4>
             </div>
         </div>
-        
+
         <div id="tab-content-galleries" class="tab-content" style="display: none;" role="tabpanel">
-            <h2 class="tab-heading">Watch Our Sermons & Events</h2>
-            <p>Catch up on the latest powerful sermons and worship sessions. Subscribe to our YouTube Channel!</p>
-            <img src="video-placeholder.jpg" alt="Video Gallery Placeholder" class="tab-image">
-            <p style="margin-top: 15px;">*(Link to your YouTube channel goes here)*</p>
+            <h2 class="tab-heading">Experience the Light: Video Galleries</h2>
+            <p>Catch up on our Sunday services, special events, and worship moments!</p>
+            <p style="color: var(--deep-orange); font-style: italic;">(This content would typically embed YouTube/Vimeo links or playlists.)</p>
+            
+            <img src="members.jpg" alt="Worship Team Picture" class="tab-image">
+
+            <p style="margin-top: 20px;">**YouTube Channel:** <a href="#" target="_blank">LRC Videos</a></p>
+            <p>Stay updated on our official social media channels for live streams and content.</p>
         </div>
 
         <div id="tab-content-testimonies" class="tab-content" style="display: none;" role="tabpanel">
-            <h2 class="tab-heading">Amazing Works of God</h2>
-            <p>Hear how God is transforming lives within our community!</p>
+            <h2 class="tab-heading">Witness the Power of Transformation</h2>
+            <p>These are the words of transformation as people move from darkness to light and freedom.</p>
 
             <div class="testimony-grid">
                 <div class="testimony-card">
-                    <h4 class="testimony-title">Healed from Chronic Illness</h4>
-                    <p class="testimony-author">— Brother John M.</p>
-                    <p class="testimony-text">"After years of doctors saying there was no hope, the pastor prayed for me during a mid-week service, and the pain vanished! I'm completely free and healthy. Praise God!"</p>
+                    <h4 class="testimony-title">Healing and Restoration</h4>
+                    <p class="testimony-author">— Blessed A.</p>
+                    <p class="testimony-text">"I was suffering from chronic pain for years. After the intercessory prayer, I woke up the next morning completely free! God is truly the healer here."</p>
                 </div>
-
                 <div class="testimony-card">
                     <h4 class="testimony-title">Financial Breakthrough</h4>
-                    <p class="testimony-author">— Sister Grace A.</p>
-                    <p class="testimony-text">"I was facing eviction, but I prayed and committed my finances to the Lord. The next day, I received an unexpected contract that cleared all my debts. God is faithful!"</p>
+                    <p class="testimony-author">— Brother John</p>
+                    <p class="testimony-text">"The teaching on working the field opened my eyes. Within weeks of applying the principles, my business saw a breakthrough I hadn't expected in years."</p>
                 </div>
-
                 <div class="testimony-card">
-                    <h4 class="testimony-title">Family Restoration</h4>
-                    <p class="testimony-author">— Anonymous</p>
-                    <p class="testimony-text">"My family was broken and scattered. Through the teaching of the Word here, I found the strength to forgive, and today, we are reunited and stronger than ever."</p>
-                </div>
-
-                <div class="testimony-card">
-                    <h4 class="testimony-title">Delivered from Addiction</h4>
-                    <p class="testimony-author">— Brother Peter O.</p>
-                    <p class="testimony-text">"The Light of Christ truly shone in my life. I walked into the church addicted and bound, but through fervent prayer and discipleship, I've been completely set free."</p>
+                    <h4 class="testimony-title">Family Peace</h4>
+                    <p class="testimony-author">— Sister Mary</p>
+                    <p class="testimony-text">"My family was facing separation and strife. Through the counseling and prayers of the church leaders, we found total reconciliation and peace."</p>
                 </div>
             </div>
         </div>
+
         <div id="tab-content-prayer" class="tab-content" style="display: none;" role="tabpanel">
-            <h2 class="tab-heading">Submit Your Prayer Request 🙏</h2>
-            <p>Our team of intercessors is ready to stand in agreement with you for your breakthrough.</p>
-            <div class="prayer-form">
+            <h2 class="tab-heading">Submit a Prayer Request</h2>
+            <p>The Light Radiation Church prayer team is dedicated to lifting up your burdens before the Lord. Submit your request anonymously or with contact details.</p>
+            
+            <form class="prayer-form" onsubmit="alert('Your prayer request has been submitted!'); return false;">
                 <div class="form-group">
-                    <label for="p-name">Your Name (Optional)</label>
-                    <input type="text" id="p-name" name="name" placeholder="Enter your name or remain anonymous">
+                    <label for="p-name">Name (Optional)</label>
+                    <input type="text" id="p-name" name="name" placeholder="Anonymous" />
                 </div>
                 <div class="form-group">
-                    <label for="p-email">Email (For Follow-up)</label>
-                    <input type="email" id="p-email" name="email" placeholder="Your email address (we respect your privacy)">
+                    <label for="p-email">Email (Optional)</label>
+                    <input type="email" id="p-email" name="email" placeholder="email@example.com" />
                 </div>
                 <div class="form-group">
-                    <label for="p-request">Your Prayer Request (Be Specific)</label>
-                    <textarea id="p-request" name="request" rows="5" required placeholder="Tell us what you need prayer for..."></textarea>
+                    <label for="p-request">Your Prayer Request (Required)</label>
+                    <textarea id="p-request" name="request" rows="6" placeholder="Dear Lord, I pray for..." required></textarea>
                 </div>
                 <button type="submit" class="submit-button">Send Prayer Request</button>
-            </div>
+            </form>
         </div>
 
         <div id="tab-content-contacts" class="tab-content" style="display: none;" role="tabpanel">
-            <h2 class="tab-heading">Reach The Light</h2>
+            <h2 class="tab-heading">Get in Touch / Visit Us</h2>
             <div class="contact-info">
-                <p><strong>Main Location:</strong> Light Radiation CF City Church</p>
-                <p><strong>Primary Contact:</strong> <a href="tel:+256760094368">+256760094368</a></p>
-                <p><strong>Email Us:</strong> <a href="mailto:susanmwaka66@gmail.com">susanmwaka66@gmail.com</a></p>
-                <p><strong>Office Hours:</strong> Tuesday - Saturday, 9:00 AM - 5:00 PM</p>
+                <h3>Main Campus Location:</h3>
+                <p>Light Radiation Christian Fellowship (City Church)</p>
+                <p>Masaka Road, Opposite the Police Station</p>
+                <p>Gulu City, Uganda</p>
+                
+                <h3>Primary Contact:</h3>
+                <p>Email: <a href="mailto:okellamoiw@example.com">okellamoiw@example.com</a></p>
+                <p>Phone: <a href="tel:+256781234567">+256 781 234 567</a> (Main Office)</p>
+                <p>Office Hours: Tuesday - Saturday, 9:00 AM - 5:00 PM</p>
             </div>
-            <img src="map-placeholder.png" alt="Church Location Map Placeholder" class="tab-image">
-            <p style="margin-top: 15px;">*(Directions/Map Embedded Here)*</p>
+
+            <img src="mainchurch.jpg" alt="Main Church Building" class="tab-image">
         </div>
-
     </footer>
+    
+    <script src="script.js"></script>
 
-    <script>
-        function showTab(tabId, clickedButton) {
-            // Hide all tab contents
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.style.display = 'none';
-            });
-
-            // Deactivate all buttons
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            // Show the selected tab content
-            const activeTab = document.getElementById('tab-content-' + tabId);
-            if (activeTab) {
-                activeTab.style.display = 'block';
-            }
-
-            // Activate the clicked button
-            clickedButton.classList.add('active');
-        }
-        
-        // Ensure the services tab is shown on page load (initial state)
-        document.addEventListener('DOMContentLoaded', () => {
-            const initialTab = document.getElementById('tab-content-services');
-            if (initialTab) {
-                initialTab.style.display = 'block';
-            }
-        });
-    </script>
 </body>
 </html>
