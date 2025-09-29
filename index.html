@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Radiation Church - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0077b6; /* Radiant Blue */
+            --deep-orange: #FFD700; /* Gold/Yellow */
+            --background-dark: #0f1c3a; /* Dark Blue */
+            --background-light: #2c496a; /* Medium Blue */
+            --text-light: #fff;
+        }
+
+        /* --- NEW FADE-IN ANIMATION --- */
+        @keyframes page-fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: auto;
+            position: relative;
+            padding: 20px;
+
+            /* INITIAL HIDE AND APPLY FADE-IN */
+            opacity: 0;
+            animation: page-fade-in 1.5s ease-out forwards;
+        }
+
+        .main-container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            min-height: 600px;
+            background: rgba(0, 0, 0, 0.65);
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- PASTOR IMAGE (LEFT COLUMN) --- */
+        .pastor-image-column {
+            flex-basis: 380px; /* Fixed width on desktop */
+            flex-grow: 0;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .pastor-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 1;
+            display: block;
+        }
+
+        /* --- CONTENT WRAPPER (RIGHT COLUMN) --- */
+        .content {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--deep-orange);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--text-light);
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .slogan {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            margin-top: 5px;
+            background: linear-gradient(45deg, #FFFED8, var(--deep-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* --- PROFILE SECTION STYLES --- */
+        .pastor-profile {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 5px solid var(--deep-orange);
+            text-align: left;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s ease; /* Added for dynamic hover effect */
+        }
+
+        .pastor-profile:hover {
+             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-title {
+            font-size: 1.5em;
+            color: var(--deep-orange);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .profile-point {
+            font-size: 1em;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .profile-point strong {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+        /* ---------------------------------- */
+
+
+        .vision-text {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            line-height: 1.5;
+            max-width: 80%;
+        }
+
+        .vision-points {
+              margin-bottom: 20px;
+        }
+
+        .vision-point {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--background-dark);
+            background-color: var(--deep-orange);
+            border: 2px solid var(--deep-orange);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--deep-orange);
+            box-shadow: 0 4px 20px var(--deep-orange);
+            transform: translateY(-2px);
+        }
+
+        /* --- MOBILE RESPONSIVENESS ADJUSTMENTS --- */
+        @media (max-width: 800px) {
+            body {
+                padding: 10px;
+            }
+            .main-container {
+                flex-direction: column;
+                min-height: auto; /* Allow height to adjust dynamically */
+                width: 100%;
+                max-width: 500px; /* Constrain width slightly on small screens */
+            }
+
+            .pastor-image-column {
+                flex-basis: auto;
+                height: 300px; /* Reduced height for portrait image on mobile */
+                padding: 10px 0;
+                box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.3); /* Shadow on bottom */
+            }
+
+            .pastor-image {
+                 /* Ensure image doesn't overflow */
+                 max-height: 100%;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                letter-spacing: 2px;
+            }
+            .slogan {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+            }
+            .vision-text {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main-container">
+        
+        <div class="pastor-image-column">
+            <img src="pastor.jpg" alt="Pastor Susan Mwaka of Light Radiation Church" class="pastor-image">
+        </div>
+
+        <div class="content">
+            <img src="logo.png" alt="Light Radiation Church Logo" class="logo">
+            <h1>LIGHT RADIATION CHURCH</h1>
+            <p class="slogan">"We are the builders (Call to build)."</p>
+            
+            <p class="vision-text">
+                **The Prophetic Mandate:** Called to build God's people spiritually, transforming lives from darkness to light.
+            </p>
+
+            <div class="vision-points">
+                <p class="vision-point">Build the Body of Christ</p>
+                <p class="vision-point">Equipping and Training the Chosen Ones</p>
+                <p class="vision-point">Excellence in Everything We Do</p>
+            </div>
+
+            <div class="pastor-profile">
+                <p class="profile-title">Meet Pastor Susan Mwaka: Vision Bearer</p>
+                <p class="profile-point">
+                    **Family:** Married for **16 years** to **Mwaka George**, with one beautiful daughter, **Lagum Gifty Michelle Mwaka**.
+                </p>
+                <p class="profile-point">
+                    **Ministry:** Full of **grace and anointing** to set people free. By God's grace, blessed with countless spiritual **sons and daughters** (she doesn't know the number!).
+                </p>
+                <p class="profile-point">
+                    **Closest Friend:** **Acan Lucy**.
+                </p>
+            </div>
+            <a href="about.html" class="cta-button">
+                Discover Our Services & Full Vision
+            </a>
+        </div>
+    </div>
+</body>
+</html>
