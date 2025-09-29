@@ -1,0 +1,640 @@
+/* Updated Church Color Palette: Radiation Blue/Gold/Purple */
+:root {
+    --primary-color: #0077b6; /* Radiant Blue */
+    --deep-orange: #FFD700; /* Gold/Yellow */
+    --background-dark: #0f1c3a; /* Dark Blue */
+    --background-light: #2c496a; /* Medium Blue */
+    --text-light: #fff;
+    --text-muted: #e0e0e0;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --border-soft: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes page-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+    color: var(--text-light);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+    
+    /* Apply Fade-In */
+    opacity: 0;
+    animation: page-fade-in 1.5s ease-out forwards;
+}
+
+/* Home Link Button for Navigation - MODIFIED FOR SMALL ARROW */
+.home-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    /* Reduced padding to make it a small button */
+    padding: 8px 10px; 
+    background-color: var(--deep-orange);
+    color: var(--background-dark);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50%; /* Changed to a circle */
+    width: 20px; /* Set a small fixed size */
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; /* Make the arrow large */
+    line-height: 1; /* Ensure vertical centering of the arrow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.home-button:hover {
+    background-color: var(--text-light);
+    transform: scale(1.05);
+}
+
+/* Hide the "Back to Home" text */
+.home-button .full-text {
+    display: none; 
+}
+
+/* Ensure only the arrow is displayed and positioned */
+.home-button .arrow-only {
+    display: block;
+    margin: 0;
+    padding: 0;
+    /* Adjust for perfect centering if needed */
+    position: relative; 
+    left: -1px; 
+}
+
+/* RESTORED CENTERING FOR MAIN CONTENT */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the container block */
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    display: block;
+    margin: 32px auto 8px auto;
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    position: static;
+}
+
+a, button, .ministry, .branch-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+header {
+    text-align: center;
+    padding: 40px 16px 16px 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border-radius: 8px;
+    margin-top: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; 
+    line-height: 1.2;
+}
+
+.slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    margin-top: 8px;
+    background: linear-gradient(45deg, #FFFED8, var(--deep-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text-light);
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.8em;
+    margin-top: 40px;
+}
+
+h3 {
+    color: var(--deep-orange); 
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 15px auto 5px;
+    font-size: 1.1em;
+    text-align: center;
+    display: inline-block;
+}
+.ministry-details h3, .branch-details h3 {
+    width: 80%;
+    margin: 0 0 8px;
+    padding: 8px 10px;
+    font-size: 1em;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CARD DISPLAY SIZE ADJUSTMENTS --- */
+
+/* Base Grid for Cards (Mobile First: Single Column up to 600px) */
+.ministry-grid, .branch-grid {
+    display: grid;
+    /* On small screens, force single column */
+    grid-template-columns: 1fr; 
+    gap: 15px; 
+    padding: 0;
+}
+
+/* Image wrappers are now a fixed size for uniformity */
+.ministry-image-wrapper,
+.branch-image-wrapper {
+    width: 100%;
+    height: 120px; /* Adjust as needed */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* vertically centers the image */
+}
+
+.ministry-image-wrapper img,
+.branch-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the container */
+    object-position: center top; /* ensures top is visible and image is centered horizontally */
+}
+
+
+/* Main Card Containers */
+.ministry, .branch-card {
+    background-color: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transform: scale(1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Reduced minimum height for smaller card size */
+    min-height: 320px; 
+    height: auto;
+}
+
+.ministry:hover, .branch-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.ministry-details, .branch-details {
+    padding: 12px 12px 20px 12px; /* Reduced internal padding */
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.ministry-details p, .branch-details p {
+    margin: 0 0 10px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.branch-details .pastor-name {
+    font-size: 1em; /* Slightly smaller font */
+    font-weight: bold;
+    color: var(--deep-orange);
+    padding: 6px; /* Reduced padding */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 12px; /* Reduced margin */
+    border: 1px solid var(--deep-orange);
+    white-space: pre-wrap;
+}
+
+.service-time {
+    font-size: 0.9em; /* Slightly smaller font */
+    font-weight: bold;
+    color: var(--deep-orange);
+    padding: 6px; /* Reduced padding */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 12px; /* Reduced margin */
+    margin-bottom: 0;
+    border: 1px solid var(--deep-orange);
+}
+
+/* Testimony Card Adjustments */
+.testimony-grid {
+    display: grid;
+    /* On small screens, force single column */
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.testimony-card {
+    background-color: rgba(0, 119, 182, 0.15); 
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 15px; /* Reduced padding */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.testimony-title {
+    font-size: 1.1em; /* Slightly smaller font */
+}
+
+/* --- END CARD DISPLAY SIZE ADJUSTMENTS --- */
+
+
+/* Specific Styles for Service Routine and Testimony */
+.service-routine {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.service-routine strong {
+    color: var(--deep-orange);
+}
+
+/* Leadership Tab Styling */
+.pastor-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted min-width for mobile */
+    gap: 8px 15px; /* Reduced gap */
+    margin-top: 10px;
+}
+.pastor-list-grid h4 {
+    margin: 0;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.mission-section {
+    padding: 32px 16px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 40px;
+    border-radius: 16px;
+    border-top: var(--border-soft);
+    text-align: center; 
+}
+
+.mission-section p {
+    font-style: italic;
+    text-align: center;
+    max-width: 800px;
+    margin: 12px auto;
+    line-height: 1.5;
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+
+.mission-section .testimony, .mission-section .prophetic-vision {
+    font-style: normal;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--deep-orange);
+    margin: 25px auto; 
+    font-size: 1em;
+    color: var(--text-light);
+    text-align: left;
+    max-width: 90%; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer and Tabs */
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 16px;
+    margin-top: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-tabs {
+    display: flex;
+    flex-direction: column; /* Force stack on mobile */
+    width: 100%;
+    max-width: 600px;
+    margin-top: 10px;
+}
+.tab-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 15px; /* Reduced padding */
+    text-align: center;
+    font-size: 0.9em; /* Smaller font for buttons */
+    margin-bottom: 3px; /* Smaller margin */
+}
+
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+/* Tablet and Desktop Adjustments (>= 768px) */
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 3.5em;
+    }
+    
+    /* Card Grids for larger screens (3 or 4 columns) */
+    .ministry-grid, .branch-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    .testimony-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* Tabs revert to horizontal layout */
+    .footer-tabs {
+        flex-direction: row;
+        flex-wrap: wrap; /* Allow wrapping if many tabs */
+        justify-content: center;
+        max-width: 1200px; 
+    }
+    .tab-button {
+        margin: 0 5px;
+    }
+    .tab-content {
+        max-width: 900px;
+    }
+    .leader-card {
+        text-align: left;
+    }
+}
+
+/* Extra Small Mobile Adjustments (<= 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    .slogan {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    /* Ensure only 1 column on very small screens, even if the minmax would allow more */
+    .ministry-grid, .branch-grid, .testimony-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .ministry, .branch-card {
+        min-height: 280px; /* Further reduction for very small screens */
+    }
+    
+    .tab-button {
+        font-size: 0.8em;
+    }
+    
+    .mission-section .testimony, .mission-section .prophetic-vision {
+        text-align: left;
+    }
+    .mission-section p, .leader-card p {
+        text-align: left;
+    }
+    .core-values-item {
+        text-align: left;
+        max-width: 100%;
+    }
+}
+
+/* ... (Remaining styles unchanged for brevity) ... */
+
+/* Specific Styles for Service Routine and Testimony */
+.service-routine {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.service-routine strong {
+    color: var(--deep-orange);
+}
+
+/* Leadership Tab Styling */
+.leader-name {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+.leader-name.branch-pastor {
+    font-size: 1em;
+    color: var(--deep-orange);
+    margin-top: 10px;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
+.role {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+.pastor-list-grid h4 {
+    margin: 0;
+    padding: 5px;
+    font-size: 0.95em;
+    font-weight: bold;
+    color: var(--text-light);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.core-values {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+.core-values h3 {
+    width: auto;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+.core-values-item {
+    display: block;
+    margin: 10px auto;
+    max-width: 500px;
+    padding: 10px;
+    border-bottom: 1px dashed var(--deep-orange);
+    text-align: center;
+}
+.core-values-item strong {
+    color: var(--deep-orange);
+    font-size: 1.1em;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 16px;
+    margin-top: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tab-content {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-in-out;
+    text-align: center; 
+}
+.tab-content p {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Override centering for list-like content within tabs */
+#tab-content-team, #tab-content-testimonies {
+    text-align: left; 
+}
+.leader-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center; 
+}
+.leader-card p {
+    text-align: center;
+}
+.pastor-list-grid h4 {
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--deep-orange);
+    text-decoration: none;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+.tab-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Prayer Form Styling */
+.prayer-form {
+    max-width: 500px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.prayer-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.prayer-form input[type="text"],
+.prayer-form input[type="email"],
+.prayer-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--text-light);
+    box-sizing: border-box; 
+}
+
+.prayer-form textarea {
+    resize: vertical;
+}
+
+.prayer-form input::placeholder,
+.prayer-form textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.submit-button {
+    background-color: var(--deep-orange);
+    color: var(--background-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
