@@ -169,23 +169,28 @@ h3 {
     padding: 0;
 }
 
-/* Image wrappers are now a fixed size for uniformity */
+/* Image wrappers for ministries and branches */
 .ministry-image-wrapper,
 .branch-image-wrapper {
     width: 100%;
-    height: 120px; /* Adjust as needed */
+    height: 120px; /* increased for proper display */
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center; /* vertically centers the image */
+    align-items: center;
 }
 
 .ministry-image-wrapper img,
 .branch-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* fills the container */
-    object-position: center top; /* ensures top is visible and image is centered horizontally */
+    object-fit: cover; /* fill container */
+    object-position: center top; /* shows top of image */
+}
+
+/* Adjust specific ministry images to show heads properly */
+.ministry-image-wrapper img.head-adjust {
+    object-position: center 10%; /* tweak this for perfect head alignment */
 }
 
 
