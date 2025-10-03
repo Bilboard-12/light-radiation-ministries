@@ -1,296 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Light Radiation Church - Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root {
-    --primary-color: #0077b6;
-    --deep-orange: #FFD700;
-    --background-dark: #0f1c3a;
-    --background-light: #2c496a;
-    --text-light: #fff;
-}
-
-/* --- FADE-IN ANIMATION --- */
-@keyframes page-fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
-    color: var(--text-light);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow-x: hidden;
-    opacity: 0;
-    animation: page-fade-in 1.5s ease-out forwards;
-}
-
-.main-container {
-    display: flex;
-    max-width: 1100px;
-    width: 100%;
-    min-height: 600px;
-    background: rgba(0,0,0,0.65);
-    border-radius: 15px;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.9);
-    backdrop-filter: blur(5px);
-    overflow: hidden;
-    flex-direction: row;
-}
-
-/* --- PASTOR IMAGE (LEFT COLUMN) --- */
-.pastor-image-column {
-    flex-basis: 380px;
-    flex-shrink: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    box-shadow: inset -5px 0 10px rgba(0,0,0,0.3);
-}
-
-.pastor-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/* --- CONTENT WRAPPER (RIGHT COLUMN) --- */
-.content {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-.logo {
-    width: 80px;
-    height: auto;
-    margin-bottom: 5px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--deep-orange);
-}
-
-h1 {
-    font-size: 2.5em;
-    color: var(--text-light);
-    margin: 0 0 5px 0;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-.slogan {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    margin-top: 5px;
-    background: linear-gradient(45deg, #FFFED8, var(--deep-orange));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-}
-
-.vision-text {
-    color: var(--text-light);
-    margin-bottom: 25px;
-    font-size: 1.1em;
-    line-height: 1.5;
-    max-width: 80%;
-}
-
-.vision-points {
-    margin-bottom: 20px;
-}
-
-.vision-point {
-    font-size: 1.1em;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 6px;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* --- PROFILE SECTION --- */
-.pastor-profile {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    border-left: 5px solid var(--deep-orange);
-    text-align: left;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    transition: all 0.3s ease;
-}
-
-.pastor-profile:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.profile-title {
-    font-size: 1.5em;
-    color: var(--deep-orange);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.profile-point {
-    font-size: 1em;
-    color: var(--text-light);
-    margin-bottom: 8px;
-    line-height: 1.4;
-}
-
-.profile-point strong {
-    color: var(--primary-color);
-    margin-right: 5px;
-}
-
-.cta-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--background-dark);
-    background-color: var(--deep-orange);
-    border: 2px solid var(--deep-orange);
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    text-transform: uppercase;
-}
-
-.cta-button:hover {
-    background-color: transparent;
-    color: var(--deep-orange);
-    box-shadow: 0 4px 20px var(--deep-orange);
-    transform: translateY(-2px);
-}
-
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 900px) {
-    .main-container {
-        flex-direction: column;
-        min-height: auto;
-        max-width: 500px;
-    }
-    .pastor-image-column {
-        width: 100%;
-        flex-basis: auto;
-        height: 300px;
-        padding: 10px 0;
-        box-shadow: inset 0 -5px 10px rgba(0,0,0,0.3);
-    }
-    .pastor-image {
-        max-height: 100%;
-    }
-    .content {
-        padding: 30px 20px;
-    }
-    h1 {
-        font-size: 1.8em;
-        letter-spacing: 2px;
-    }
-    .slogan {
-        font-size: 1.4em;
-        margin-bottom: 15px;
-    }
-    .vision-text {
-        font-size: 1em;
-    }
-    .vision-point {
-        font-size: 1em;
-    }
-    .profile-title {
-        font-size: 1.3em;
-    }
-    .profile-point {
-        font-size: 0.95em;
-    }
-    .cta-button {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-}
-
-@media (max-width: 600px) {
-    .cta-button {
-        width: 90%;
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-    .pastor-profile {
-        padding: 12px;
-    }
-}
-
-@media (max-width: 400px) {
-    .vision-text, .pastor-profile {
-        max-width: 95%;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Radiation Church - Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-<div class="main-container">
-    <div class="pastor-image-column">
-        <img src="pastor.jpg" alt="Pastor Susan Mwaka of Light Radiation Church" class="pastor-image">
-    </div>
-    <div class="content">
-        <img src="logo.png" alt="Light Radiation Church Logo" class="logo">
+
+    <a href="index.html" class="home-button">
+    <span class="arrow-only">←</span>
+    <span class="full-text">Back to Home</span>
+</a>
+
+    <img src="logo.png" alt="Light Radiation Church Logo" class="logo">
+    
+    <header>
         <h1>LIGHT RADIATION CHURCH</h1>
         <p class="slogan">"We are the builders (Call to build)."</p>
+    </header>
 
-        <p class="vision-text">
-            <strong>The Prophetic Mandate:</strong> Called to build God's people spiritually, transforming lives from darkness to light.
-        </p>
+    <div class="container">
+        <div class="mission-section">
+            <h2 class="section-heading">Our Vision & Mission</h2>
+            <p class="vision-item">**Vision 1:** To build the body of Christ</p>
+            <p class="vision-item">**Vision 2:** Excellent in everything we do</p>
+            
+            <h2 class="section-heading">Our Mission</h2>
+            <p class="mission-statement">To equipping and training the chosen ones of God how to work the field.</p>
+            
+            <hr class="separator">
 
-        <div class="vision-points">
-            <p class="vision-point">Build the Body of Christ</p>
-            <p class="vision-point">Equipping and Training the Chosen Ones</p>
-            <p class="vision-point">Excellence in Everything We Do</p>
+            <h2 class="section-heading">Prophetic Foundation: The Light Ray Vision</h2>
+            <p>Our ministry's name and purpose were established by a direct word from the Lord, connecting us to the power of transformation and light (John 8:12).</p>
+
+            <blockquote class="prophetic-vision">
+                <p>On **10/8/2022** in the early morning, while I was awake, I was so scared. I heard a voice repeatedly saying: **"Light ray, Light ray, Light ray Christian Fellowship (Light Radiation C.F.). I am the light of the world."** This voice was confirmed by Scripture: **John 8:12**.</p>
+            </blockquote>
+
+            <div class="core-values">
+                <h3>Core Value: Transformation</h3>
+                <p class="core-values-item">From darkness to light **(Ephesians 5:8-18)**</p>
+                <p class="core-values-item">From slavery to freedom</p>
+                <p class="core-values-item">From carrying the **yoke of sin** to freedom</p>
+                <p class="core-values-item">From curses to blessing</p>
+            </div>
+            
+            <h2 class="section-heading">The Builder's Testimony (Our Call to Spiritual Building)</h2>
+            <p>The call to be **"the builders"** is directly tied to our mandate to build **His people spiritually**, reflecting the vision of light and transformation.</p>
+
+            <blockquote class="testimony">
+                <p>I met a man on the way—he didn't know me, and I didn't know him. I was actually going to buy iron sheets for the church. It wasn't a dream or vision; I was walking around 10:00 AM in the morning when he said to me:</p>
+                <p class="testimony-quote">**"God did not call you to build this physical house,"** *[while pointing to a very big house upstairs]* **"because such a building like this is nothing in the eyes of God. But He called you to build His people spiritually. That's what you have been called for, and God will bless you."**</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <footer>
+        <h2>Connect With Us</h2>
+        <div class="footer-tabs" role="tablist">
+            <button class="tab-button active" onclick="showTab('services', this)" aria-controls="tab-content-services">Service Times</button>
+            <button class="tab-button" onclick="showTab('ministries', this)" aria-controls="tab-content-ministries">Our Ministries</button>
+            <button class="tab-button" onclick="showTab('branches', this)" aria-controls="tab-content-branches">LRC Branches</button>
+            <button class="tab-button" onclick="showTab('team', this)" aria-controls="tab-content-team">Leadership Team</button>
+            <button class="tab-button" onclick="showTab('galleries', this)" aria-controls="tab-content-galleries">Video Galleries</button>
+            <button class="tab-button" onclick="showTab('testimonies', this)" aria-controls="tab-content-testimonies">Testimonies</button>
+            <button class="tab-button" onclick="showTab('prayer', this)" aria-controls="tab-content-prayer">Prayer Request</button>
+            <button class="tab-button" onclick="showTab('contacts', this)" aria-controls="tab-content-contacts">Contact/Location</button>
         </div>
 
-        <div class="pastor-profile">
-            <p class="profile-title">Meet Pastor Susan Mwaka: Vision Bearer</p>
-            <p class="profile-point">
-                <strong>Family:</strong> Married for <strong>16 years</strong> to <strong>Mwaka George</strong>, with one beautiful daughter, <strong>Lagum Gifty Michelle Mwaka</strong>.
-            </p>
-            <p class="profile-point">
-                <strong>Ministry:</strong> Full of <strong>grace and anointing</strong> to set people free. By God's grace, blessed with countless spiritual <strong>sons and daughters</strong> (she doesn't know the number!).
-            </p>
-            <p class="profile-point">
-                <strong>Closest Friend:</strong> Reijerse Acan Lucy.
-            </p>
+        <div id="tab-content-services" class="tab-content" role="tabpanel">
+            <h3 class="tab-heading">Sunday Worship Services</h3>
+            <p><strong>First Service:</strong> 8:00 AM – 10:00 AM</p>
+            <p><strong>Second Service:</strong> 10:00 AM – 1:00 PM</p>
+            <p><strong>Third Service:</strong> 4:00 PM – 6:00 PM</p>
+            
+            <div class="service-routine">
+                <strong>Service Routine:</strong>
+                <p>Massive Intercessions, Praise & Worship, Visitor Introductions, Presentations, Announcements, and the Word of God.</p>
+            </div>
+
+            <h3 class="tab-heading">Wednesday Mid-Week Services</h3>
+            <p><strong>Women's Prayer Meeting:</strong> 8:00 AM – 4:00 PM</p>
+            <p><strong>Mid-Week Service:</strong> 4:00 PM – 6:00 PM</p>
+            
+            <h3 class="tab-heading">Weekly Activities</h3>
+            <p><strong>Tuesdays, Thursdays, & Saturdays:</strong> 2:00 PM – 6:00 PM</p>
+            <p>Church Cleaning & Choir Practice (Worship & Arts)</p>
         </div>
 
-        <a href="about.html" class="cta-button">
-            Discover Our Services & Full Vision
-        </a>
+      <div id="tab-content-ministries" class="tab-content" style="display: none;" role="tabpanel">
+    <h2 class="tab-heading">Building Through Service</h2>
+    <div class="ministry-grid">
+        
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="members.jpg" alt="Ushering Ministry" class="head-adjust distance-effect">
+            </div>
+            <div class="ministry-details">
+                <h3>Ushering Ministry</h3>
+                <p>The frontline of service, welcoming and guiding attendees to ensure a smooth, comfortable worship experience.</p>
+                <span class="service-time">Serving All Services</span>
+            </div>
+        </div>
+
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="choir.jpg" alt="Choir Ministry">
+            </div>
+            <div class="ministry-details">
+                <h3>Choir Ministry</h3>
+                <p>Leading the congregation in vibrant worship and singing, preparing hearts to receive the Word.</p>
+                <span class="service-time">Practice: Tue, Thu, Sat @ 2:00 PM</span>
+            </div>
+        </div>
+        
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="leadwers.jpg" alt="SACCO Ministry">
+            </div>
+            <div class="ministry-details">
+                <h3>SACCO Ministry</h3>
+                <p>A financial cooperative focused on promoting savings, credit access, and economic empowerment among church members.</p>
+                <span class="service-time">Office Hours Apply</span>
+            </div>
+        </div>
+
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="host.jpg" alt="Hospitality Ministry" class="head-adjust distance-effect">
+            </div>
+            <div class="ministry-details">
+                <h3>Hospitality Ministry</h3>
+                <p>Ensuring every visitor and member feels valued and cared for, often managing refreshments and welcoming newcomers.</p>
+                <span class="service-time">Serving Sundays & Wednesdays</span>
+            </div>
+        </div>
+
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="members.jpg" alt="Evangelism and Outreach" class="head-adjust distance-effect">
+            </div>
+            <div class="ministry-details">
+                <h3>Evangelism and Outreach</h3>
+                <p>Sharing the Gospel and extending the church's influence into the wider community through organized missions and campaigns.</p>
+                <span class="service-time">Missions & Crusades</span>
+            </div>
+        </div>
+        
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="interpret.jpg" alt="Pastoral Ministries">
+            </div>
+            <div class="ministry-details">
+                <h3>Pastoral Ministries</h3>
+                <p>Providing spiritual guidance, counseling, leadership, and care for the flock under the direction of the Lead Pastors.</p>
+                <span class="service-time">By Appointment</span>
+            </div>
+        </div>
+
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="kids.jpg" alt="Children's Ministry">
+            </div>
+            <div class="ministry-details">
+                <h3>Children's Ministry (Sunday School)</h3>
+                <p>Teaching foundational truths with engaging stories and activities for ages 3-12.</p>
+                <span class="service-time">Sundays @ 8:00 AM</span>
+            </div>
+        </div>
+        
+        <div class="ministry">
+            <div class="ministry-image-wrapper">
+                <img src="member.jpg" alt="Youth Ministry">
+            </div>
+            <div class="ministry-details">
+                <h3>Youth Ministry</h3>
+                <p>Building strong faith in teenagers through mentorship, worship, and fun events.</p>
+                <span class="service-time">Mid-Week Activities TBD</span>
+            </div>
+        </div>
+        
     </div>
 </div>
+
+
+        <div id="tab-content-branches" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Our Radiation Points</h2>
+            <p>We are a growing family! Find a **Light Radiation Church branch** near you and join the radiation!</p>
+            <div class="branch-grid">
+                
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Alii Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Alii Light Radiation CF</h3>
+                        <p>A community church focused on local outreach and discipleship.</p>
+                        <span class="pastor-name">Pastor Odonkara Charles</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Edure Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Edure Light Radiation CF</h3>
+                        <p>Building faith and family strength in the Edure region.</p>
+                        <span class="pastor-name">Pastor Walter Amii</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Labora Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Labora Light Radiation CF</h3>
+                        <p>Dedicated to ministry and serving the Labora community.</p>
+                        <span class="pastor-name">Pastor Susan Apiyo</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Ogul Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Ogul Light Radiation CF</h3>
+                        <p>Jointly led by two passionate pastors to serve the Ogul area.</p>
+                        <span class="pastor-name">Pastor Jimmy Akera & Pastor Odoch Junior</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Kinene Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Kinene Light Radiation CF</h3>
+                        <p>A beacon of hope and worship in Kinene, focusing on youth engagement.</p>
+                        <span class="pastor-name">Pastor Denise Okelukwana</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="PE Rwot Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>PE Rwot Light Radiation</h3>
+                        <p>A ministry dedicated to prayer and evangelism in the PE Rwot area.</p>
+                        <span class="pastor-name">Pastor David</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="Awako Branch">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Awako Light Radiation CF</h3>
+                        <p>Committed to spiritual growth and fellowship in the Awako community.</p>
+                        <span class="pastor-name">Pastor Ojolurwot Francis</span>
+                    </div>
+                </div>
+
+                <div class="branch-card">
+                    <div class="branch-image-wrapper">
+                        <img src="logo.png" alt="City Church">
+                    </div>
+                    <div class="branch-details">
+                        <h3>Light Radiation CF City Church (Main Campus)</h3>
+                        <p>Our urban ministry center and core administrative hub.</p>
+                        <span class="pastor-name">Under Oversight of the Vision Bearer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-content-team" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Our Shepherds and Leaders</h2>
+            <div class="leader-card">
+                <span class="leader-name">Pastor Susan Mwaka</span>
+                <span class="role">Vision Bearer / Overseer</span>
+                <p>The founder and spiritual head of Light Radiation Church, guiding the global vision and mission.</p>
+            </div>
+            
+            <div class="leader-card">
+                <span class="leader-name">The Senior Leadership Team</span>
+                <p>Supporting the Vision Bearer, this team provides counsel, strategic direction, and oversight of core ministries.</p>
+            </div>
+
+            <h3>All Branch Pastors:</h3>
+            <div class="pastor-list-grid">
+                <h4>Pastor Odonkara Charles (Alwii)</h4>
+                <h4>Pastor Walter Amii (Edure)</h4>
+                <h4>Pastor Susan Apiyo (Labora)</h4>
+                <h4>Pastor Jimmy Akera (Ogul)</h4>
+                <h4>Pastor Rubangakene Simon  (Lungulu)</h4>
+                <h4>Pastor Denise Okelukwana (Kinene)</h4>
+                <h4>Pastor Okello David (Peny Rwot)</h4>
+                <h4>Pastor Ojolurwot Francis (Awalkok)</h4>
+                 <h4>Pastor Denis Okumu (Got Moko)</h4>
+                <h4>Pastor Samuel Arop (Palaka)</h4>
+                 <h4>Pastor Rwot Omara Christopher (Okeyomero)</h4>
+                 <h4>Pastor Ayoo Agness (Paboo)</h4>
+            </div>
+        </div>
+
+        <div id="tab-content-galleries" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Experience the Light: Video Galleries</h2>
+            <p>Catch up on our Sunday services, special events, and worship moments!</p>
+            <p style="color: var(--deep-orange); font-style: italic;">(This content would typically embed YouTube/Vimeo links or playlists.)</p>
+            
+            <img src="members.jpg" alt="Worship Team Picture" class="tab-image">
+
+            <p style="margin-top: 20px;">**YouTube Channel:** <a href="#" target="_blank">LRC Videos</a></p>
+            <p>Stay updated on our official social media channels for live streams and content.</p>
+        </div>
+
+        <div id="tab-content-testimonies" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Witness the Power of Transformation</h2>
+            <p>These are the words of transformation as people move from darkness to light and freedom.</p>
+
+            <div class="testimony-grid">
+                <div class="testimony-card">
+                    <h4 class="testimony-title">Healing and Restoration</h4>
+                    <p class="testimony-author">— Blessed A.</p>
+                    <p class="testimony-text">"I was suffering from chronic pain for years. After the intercessory prayer, I woke up the next morning completely free! God is truly the healer here."</p>
+                </div>
+                <div class="testimony-card">
+                    <h4 class="testimony-title">Financial Breakthrough</h4>
+                    <p class="testimony-author">— Brother John</p>
+                    <p class="testimony-text">"The teaching on working the field opened my eyes. Within weeks of applying the principles, my business saw a breakthrough I hadn't expected in years."</p>
+                </div>
+                <div class="testimony-card">
+                    <h4 class="testimony-title">Family Peace</h4>
+                    <p class="testimony-author">— Sister Mary</p>
+                    <p class="testimony-text">"My family was facing separation and strife. Through the counseling and prayers of the church leaders, we found total reconciliation and peace."</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-content-prayer" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Submit a Prayer Request</h2>
+            <p>The Light Radiation Church prayer team is dedicated to lifting up your burdens before the Lord. Submit your request anonymously or with contact details.</p>
+            
+            <form class="prayer-form" onsubmit="alert('Your prayer request has been submitted!'); return false;">
+                <div class="form-group">
+                    <label for="p-name">Name (Optional)</label>
+                    <input type="text" id="p-name" name="name" placeholder="Anonymous" />
+                </div>
+                <div class="form-group">
+                    <label for="p-email">Email (Optional)</label>
+                    <input type="email" id="p-email" name="email" placeholder="email@example.com" />
+                </div>
+                <div class="form-group">
+                    <label for="p-request">Your Prayer Request (Required)</label>
+                    <textarea id="p-request" name="request" rows="6" placeholder="Dear Lord, I pray for..." required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Prayer Request</button>
+            </form>
+        </div>
+
+        <div id="tab-content-contacts" class="tab-content" style="display: none;" role="tabpanel">
+            <h2 class="tab-heading">Get in Touch / Visit Us</h2>
+            <div class="contact-info">
+                <h3>Main Campus Location:</h3>
+                <p>Light Radiation Christian Fellowship (City Church)</p>
+                <p>Ring road, near Olailong Market</p>
+                <p>Gulu City, Uganda</p>
+                
+                <h3>Primary Contact:</h3>
+                <p>Email: <a href="mailto:susanmwaka66@gmail.com">susanmwaka66@gmail</a></p>
+                <p>Phone: <a href=" tel:+256760094368"> Admin +256 781182144</a> (Main Office)</p>
+                <p>Office Hours: Tuesday - Saturday, 9:00 AM - 5:00 PM</p>
+            </div>
+
+            <img src="mainchurch.jpg" alt="Main Church Building" class="tab-image">
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+
 </body>
 </html>
+
+
+
+
 
